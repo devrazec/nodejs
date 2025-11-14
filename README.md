@@ -87,15 +87,15 @@ Building Projects with Nodejs
 project/
 ├─ src/
 │  ├─ repositories/
-│  │  ├─ user.repository.ts /js
+│  │  ├─ user.repository.ts / .js
 │  ├─ services/
-│  │  └─ user.service.ts / js
+│  │  └─ user.service.ts / .js
 │  ├─ controllers/
-│  │  └─ user.controller.ts / js
+│  │  └─ user.controller.ts / .js
 │  ├─ routes/
-│  │  └─ user.routes.ts / js
-│  ├─ app.ts
-│  └─ server.ts
+│  │  └─ user.routes.ts / .js
+│  ├─ app.ts / .js
+│  └─ server.ts / .js
 ├─ build.js
 ├─ package.json
 ├─ tsconfig.json
