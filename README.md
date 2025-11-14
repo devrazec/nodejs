@@ -8,6 +8,9 @@ npm i -D eslint prettier eslint-config-prettier eslint-plugin-prettier
 npx eslint --init
 npm i -D esbuild
 
+npm i express
+npm i -D nodemon
+
 ✔ What do you want to lint? · javascript
 ✔ How would you like to use ESLint? · problems
 ✔ What type of modules does your project use? · esm
@@ -46,5 +49,12 @@ npm i -D \
   eslint-config-prettier \
   eslint-plugin-prettier \
   @typescript-eslint/eslint-plugin \
-  @typescript-eslint/parser
+  @typescript-eslint/parser \
 
+npm i -D @types/express
+npm i -D nodemon
+npm i -D @types/node
+npm i -D ts-node typescript
+npm i -D typescript-eslint
+
+jsonwebtoken express prisma body-parser path uuid
