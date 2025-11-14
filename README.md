@@ -115,11 +115,39 @@ npm i -S express
 npm i -D nodemon
 
 ✔ What do you want to lint? · javascript
-✔ How would you like to use ESLint? · problems
+✔ How would you like to use ESLint? · syntacs and problems
 ✔ What type of modules does your project use? · esm
 ✔ Which framework does your project use? · none
 ✔ Does your project use TypeScript? · No
 ✔ Where does your code run? · browser
+✔ Would you like to install them now? · Yes
+✔ Which package manager do you want to use? · npm
+
+````
+
+# Project from folder 2: Nodejs + JavaScript + Prisma + @libsql Database
+
+````
+npm init -y
+npm i -D eslint prettier eslint-config-prettier eslint-plugin-prettier
+npx eslint --init
+
+✔ What do you want to lint? · javascript
+✔ How would you like to use ESLint? · syntacs and problems
+✔ What type of modules does your project use? · esm
+✔ Which framework does your project use? · none
+✔ Does your project use TypeScript? · No
+✔ Where does your code run? · browser
+✔ Would you like to install them now? · Yes
+✔ Which package manager do you want to use? · npm
+
+npm i -D esbuild
+npm i -S express
+npm i -D nodemon
+
+npm i -S @prisma/client
+npm i -D prisma
+npm i -S @libsql/client
 
 ````
 
@@ -146,6 +174,28 @@ npm i -D @types/node
 npm i -D ts-node typescript
 npm i -D typescript-eslint
 
-npm i -S cors body-parser uuid axios socket.io jsonwebtoken bcrypt better-sqlite3
-
 ````
+
+# Create Tables and Migration
+
+npm run migrate
+
+# Run Web UI
+npx prisma studio
+
+# Create sqLite Database Record
+
+sqlite3 data/local.db
+
+INSERT INTO User (name, email) VALUES ('Bob', 'bob@example.com');
+INSERT INTO User (name, email) VALUES ('Cezar', 'cezar@example.com');
+
+.quit
+
+# Install Packages
+
+npm i -S concurrently body-parser cors axios socket.io socket.io-client jsonwebtoken bcrypt dotenv uuid
+
+# 
+
+
