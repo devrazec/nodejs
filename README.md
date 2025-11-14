@@ -83,6 +83,7 @@ Building Projects with Nodejs
 
 # Full OOP Project 1 and 3
 
+````
 project/
 ├─ src/
 │  ├─ repositories/
@@ -99,6 +100,8 @@ project/
 ├─ package.json
 ├─ tsconfig.json
 └─ eslint.config.js
+
+````
 
 # Project from folder 1: Nodejs + JavaScript
 
