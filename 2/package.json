@@ -6,9 +6,9 @@
   "type": "module",
   "scripts": {
     "build": "node build.js",
-    "start": "node dist/server.js",
+    "frontend": "concurrently --kill-others \"npm run start\" \"npm run prisma\"",
     "studio": "concurrently --kill-others \"npm run dev\" \"npm run prisma\"",
-    "frontend": "node dist/server.js",
+    "start": "node dist/server.js",
     "prisma": "prisma studio",
     "dev": "nodemon src/server.js",
     "lint": "eslint src",
