@@ -148,6 +148,11 @@ npm i -D nodemon
 npm i -S @prisma/client
 npm i -D prisma
 npm i -S @libsql/client
+npm i -S concurrently
+
+npm run studio
+http://localhost:3000/
+http://localhost:5555/
 
 ````
 
@@ -182,6 +187,7 @@ npm run migrate
 
 # Run Web UI
 npx prisma studio
+npx prisma generate
 
 # Create sqLite Database Record
 

@@ -1,6 +1,5 @@
 import express from 'express';
 import userRoutes from './routes/user.routes.js';
-import { startRealtime } from "./realtime/start.realtime.js";
 
 import path from "path";
 import { fileURLToPath } from "url";
@@ -21,8 +20,5 @@ app.get("/", (req, res) => {
 });
 
 app.use('/users', userRoutes);
-
-// Start realtime DB listener
-startRealtime();
 
 export default app;

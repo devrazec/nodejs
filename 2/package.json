@@ -7,6 +7,9 @@
   "scripts": {
     "build": "node build.js",
     "start": "node dist/server.js",
+    "studio": "concurrently --kill-others \"npm run dev\" \"npm run prisma\"",
+    "frontend": "node dist/server.js",
+    "prisma": "prisma studio",
     "dev": "nodemon src/server.js",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
@@ -30,6 +33,7 @@
   "dependencies": {
     "@libsql/client": "^0.15.15",
     "@prisma/client": "^6.19.0",
+    "concurrently": "^9.2.1",
     "express": "^5.1.0"
   }
 }
