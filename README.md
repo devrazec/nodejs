@@ -1,14 +1,23 @@
 # nodejs
 Building Projects with Nodejs
 
+Key Features
+- All repository/service/controller methods use async/await ✅
+- Full CRUD API for users ✅
+- Error handling in controllers ✅
+- Ready for ES Modules, Node.js 18+ ✅
+- Can use ESBuild for production bundle ✅
+- Can use TypeScript with type-only imports
+
 # 1 Nodejs + JavaScript
 
+````
 npm init -y
 npm i -D eslint prettier eslint-config-prettier eslint-plugin-prettier
 npx eslint --init
 npm i -D esbuild
 
-npm i express
+npm i -S express
 npm i -D nodemon
 
 ✔ What do you want to lint? · javascript
@@ -20,9 +29,12 @@ npm i -D nodemon
 
 # 3 Nodejs + TypeScript
 
+````
 npm init -y
 npm i -D typescript
 npx tsc --init
+
+npm i -S express
 
 npm i -D \
   eslint \
@@ -40,7 +52,10 @@ npm i -D typescript-eslint
 
   prisma 
 
-cors body-parser uuid axios socket.io jsonwebtoken bcrypt
+npm i -S cors body-parser uuid axios socket.io jsonwebtoken bcrypt better-sqlite3
+
+npm i -S 
+````
 
 # Project 3 Layers
 
