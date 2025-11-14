@@ -1,7 +1,9 @@
 # nodejs
 Building Projects with Nodejs
 
-Key Features
+## Key Features
+
+- Layered Architecture / 3-Layer Pattern
 - All repository/service/controller methods use async/await
 - Full CRUD API for users
 - Error handling in controllers
@@ -56,7 +58,7 @@ npm i -S cors body-parser uuid axios socket.io jsonwebtoken bcrypt better-sqlite
 
 ````
 
-# Project 3 Layers
+# Project Architecture
 
 ![Pic1](./docs/diagram1.png)  
 
@@ -92,3 +94,12 @@ npm i -S cors body-parser uuid axios socket.io jsonwebtoken bcrypt better-sqlite
 | src/controllers/user.controller.js / .ts
 | Responsibility: Handles HTTP requests and responses, calls services.
 | Pattern: Controller Pattern — decouples routing from business logic.
+
+# Project Patterns
+
+- Router Pattern / Modular Routing
+- Singleton-ish Service Instances
+- Error Handling / Exception Pattern
+- Async/Await / Promise Handling
+- Dependency Injection (light)
+- DTO-ish Pattern (Data Transfer)
