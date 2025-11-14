@@ -12,7 +12,7 @@ export class UserRepository {
     return this.users.find((u) => u.id === id) ?? null;
   }
 
-    async create(user) {
+  async create(user) {
     const newUser = { id: this.users.length + 1, ...user };
     this.users.push(newUser);
     return newUser;
@@ -26,7 +26,7 @@ export class UserRepository {
   }
 
   async delete(id) {
-    const index = this.users.findIndex(u => u.id === id);
+    const index = this.users.findIndex((u) => u.id === id);
     if (index === -1) return null;
     return this.users.splice(index, 1)[0];
   }
