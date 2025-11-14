@@ -57,7 +57,7 @@ Building Projects with Nodejs
 - Dependency Injection (light)
 - DTO-ish Pattern (Data Transfer)
 
-# 1 Nodejs + JavaScript
+# Project from folder 1: Nodejs + JavaScript
 
 ````
 npm init -y
@@ -77,7 +77,7 @@ npm i -D nodemon
 
 ````
 
-# 3 Nodejs + TypeScript
+# Project from folder 3: Nodejs + TypeScript
 
 ````
 npm init -y
