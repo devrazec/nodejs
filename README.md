@@ -37,5 +37,6 @@ npm i -D nodemon
 npm i -D @types/node
 npm i -D ts-node typescript
 npm i -D typescript-eslint
+npm i -D tsx
 
 jsonwebtoken express prisma body-parser path uuid
