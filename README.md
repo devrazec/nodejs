@@ -2,11 +2,11 @@
 Building Projects with Nodejs
 
 Key Features
-- All repository/service/controller methods use async/await ✅
-- Full CRUD API for users ✅
-- Error handling in controllers ✅
-- Ready for ES Modules, Node.js 18+ ✅
-- Can use ESBuild for production bundle ✅
+- All repository/service/controller methods use async/await
+- Full CRUD API for users
+- Error handling in controllers
+- Ready for ES Modules, Node.js 18+
+- Can use ESBuild for production bundle
 - Can use TypeScript with type-only imports
 
 # 1 Nodejs + JavaScript
@@ -26,6 +26,8 @@ npm i -D nodemon
 ✔ Which framework does your project use? · none
 ✔ Does your project use TypeScript? · No
 ✔ Where does your code run? · browser
+
+````
 
 # 3 Nodejs + TypeScript
 
@@ -50,11 +52,8 @@ npm i -D @types/node
 npm i -D ts-node typescript
 npm i -D typescript-eslint
 
-  prisma 
-
 npm i -S cors body-parser uuid axios socket.io jsonwebtoken bcrypt better-sqlite3
 
-npm i -S 
 ````
 
 # Project 3 Layers
