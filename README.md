@@ -57,6 +57,20 @@ Building Projects with Nodejs
 - Dependency Injection (light)
 - DTO-ish Pattern (Data Transfer)
 
+# Project OOP principles
+
+- Encapsulation means hiding internal details and exposing only what other modules need.
+- Abstraction is simplifying complexity by exposing only what matters.
+- Polymorphism means different objects can be used through the same interface.
+- Inheritance means a class can inherit from another class.
+
+| OOP Principle	| Where It Appears in the Node.js Project|
+----------------|----------------------------------------|
+| Encapsulation	| Each layer hides its internal logic (DB, business rules, HTTP).
+| Abstraction	| Services abstract business rules; repositories abstract DB access.
+| Polymorphism	| Repositories or services can be swapped via dependency injection.
+| Inheritance	| Optional: shared base classes (BaseRepository, BaseController).
+
 # Project from folder 1: Nodejs + JavaScript
 
 ````
