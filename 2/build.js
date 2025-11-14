@@ -7,7 +7,7 @@ esbuild
     platform: 'node', // Node.js target
     format: 'esm', // <-- Important: generate ES Module output
     outfile: 'dist/server.js',
-    external: ['express'],
+    external: ['express', '@prisma/client'],
     sourcemap: true,
     minify: true,
   })
