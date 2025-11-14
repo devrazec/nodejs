@@ -48,7 +48,6 @@ cors body-parser uuid axios socket.io jsonwebtoken bcrypt
 
 | Pattern | Where | Purpose |
 |---------|-------|---------|
-
 | Layered Architecture | All layers	| Separates concerns
 | Repository Pattern |	repositories/	| Abstracts data access
 | Service Layer Pattern |	services/	| Centralizes business logic
