@@ -48,6 +48,16 @@ Building Projects with Nodejs
 | Responsibility: Handles HTTP requests and responses, calls services.
 | Pattern: Controller Pattern — decouples routing from business logic.
 
+# Design Patterns
+
+- Repository Pattern
+- Factory Pattern
+- Dependency Injection Pattern
+- Strategy Pattern (e.g., for multiple data sources)
+- Adapter Pattern (e.g., to switch between DB providers)
+- Singleton Pattern
+- MVC + Layered Architecture
+
 # Project Patterns
 
 - Router Pattern / Modular Routing
@@ -70,6 +80,25 @@ Building Projects with Nodejs
 | Abstraction	| Services abstract business rules; repositories abstract DB access.
 | Polymorphism	| Repositories or services can be swapped via dependency injection.
 | Inheritance	| Optional: shared base classes (BaseRepository, BaseController).
+
+# Full OOP Project 1 and 3
+
+project/
+├─ src/
+│  ├─ repositories/
+│  │  ├─ user.repository.ts /js
+│  ├─ services/
+│  │  └─ user.service.ts / js
+│  ├─ controllers/
+│  │  └─ user.controller.ts / js
+│  ├─ routes/
+│  │  └─ user.routes.ts / js
+│  ├─ app.ts
+│  └─ server.ts
+├─ build.js
+├─ package.json
+├─ tsconfig.json
+└─ eslint.config.js
 
 # Project from folder 1: Nodejs + JavaScript
 
