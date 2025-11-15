@@ -202,6 +202,31 @@ INSERT INTO User (name, email) VALUES ('Cezar', 'cezar@example.com');
 
 npm i -S concurrently body-parser cors axios socket.io socket.io-client jsonwebtoken bcrypt dotenv uuid
 
-# 
+# Project from folder 4: Nodejs + JavaScript + Prisma + @libsql Database + Socket IO
+
+````
+npm init -y
+npm i -D eslint prettier eslint-config-prettier eslint-plugin-prettier
+npx eslint --init
+
+✔ What do you want to lint? · javascript
+✔ How would you like to use ESLint? · syntacs and problems
+✔ What type of modules does your project use? · esm
+✔ Which framework does your project use? · none
+✔ Does your project use TypeScript? · No
+✔ Where does your code run? · browser
+✔ Would you like to install them now? · Yes
+✔ Which package manager do you want to use? · npm
+
+npm i -D esbuild nodemon prisma concurrently
+npm i -S express @prisma/client @libsql/client socket.io socket.io-client
+
+npm run migrate
+
+npm run studio
+http://localhost:3000/
+http://localhost:5555/
+
+````
 
 

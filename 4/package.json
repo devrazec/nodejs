@@ -1,0 +1,42 @@
+{
+  "name": "4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "build": "node build.js",
+    "frontend": "concurrently --kill-others \"npm run start\" \"npm run prisma\"",
+    "studio": "concurrently --kill-others \"npm run dev\" \"npm run prisma\"",
+    "start": "node dist/server.js",
+    "prisma": "prisma studio",
+    "dev": "nodemon src/server.js",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "format": "prettier --write .",
+    "migrate": "npx prisma migrate dev --name init"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "concurrently": "^9.2.1",
+    "esbuild": "^0.27.0",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "globals": "^16.5.0",
+    "nodemon": "^3.1.11",
+    "prettier": "^3.6.2",
+    "prisma": "^6.19.0"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.15.15",
+    "@prisma/client": "^6.19.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1"
+  }
+}
