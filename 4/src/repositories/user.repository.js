@@ -3,15 +3,33 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export class UserRepository {
-  async findAll() {
+
+  async listUsers() {
     return prisma.user.findMany();
   }
 
-  async create(user) {
-    return prisma.user.create({ data: user });
+  async getUser(id) {
+    return prisma.user.findUnique({
+      where: { id }
+    });
   }
 
-  async findById(id) {
-    return prisma.user.findUnique({ where: { id } });
+  async createUser(data) {
+    return prisma.user.create({
+      data
+    });
+  }
+
+  async updateUser(id, data) {
+    return prisma.user.update({
+      where: { id },
+      data
+    });
+  }
+
+  async deleteUser(id) {
+    return prisma.user.delete({
+      where: { id }
+    });
   }
 }

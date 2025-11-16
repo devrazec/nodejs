@@ -193,8 +193,7 @@ npx prisma generate
 
 sqlite3 data/local.db
 
-INSERT INTO User (name, email) VALUES ('Bob', 'bob@example.com');
-INSERT INTO User (name, email) VALUES ('Cezar', 'cezar@example.com');
+INSERT INTO User (firstname, lastname, phone, email) VALUES ('Bob', 'Bob', '45678894', 'bob@example.com');
 
 .quit
 
@@ -219,8 +218,10 @@ npx eslint --init
 ✔ Which package manager do you want to use? · npm
 
 npm i -D esbuild nodemon prisma concurrently
-npm i -S express @prisma/client @libsql/client socket.io socket.io-client
+npm i -S express @prisma/client @libsql/client socket.io
+npm i -D @faker-js/faker
 
+npx prisma migrate reset
 npm run migrate
 
 npm run studio

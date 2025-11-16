@@ -1,64 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>User Records</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 40px; }
-    table { border-collapse: collapse; width: 50%; }
-    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-    th { background-color: #f4f4f4; }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    table {
+      width: 100vw;
+      height: 100vh;
+      border-collapse: collapse;
+    }
+
+    td {
+      border: 1px solid #ccc;
+      padding: 0;
+      margin: 0;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
   </style>
 </head>
 <body>
-  <h1>User Records</h1>
-  <table id="user-table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Records will be inserted here -->
-    </tbody>
+  <table>
+    <tr>
+      <!-- <td><iframe src="/handsontable.html"></iframe></td> -->
+      <td><iframe src="/page3.html"></iframe></td>
+      
+      <td><iframe src="/jeasyui.html"></iframe></td>
+    </tr>
+    <tr>
+      <!-- <td><iframe src="/page3.html"></iframe></td> -->
+    </tr>
   </table>
-
-  <!-- Socket.IO client -->
-  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
-  <script>
-    const socket = io(); // Connect to Socket.IO server
-    const tbody = document.querySelector("#user-table tbody");
-
-    // Load all existing users
-    async function loadUsers() {
-      const res = await fetch("/users");
-      const users = await res.json();
-      tbody.innerHTML = "";
-
-      users.forEach(user => {
-        addUserRow(user);
-      });
-    }
-
-    // Helper function to append a user row
-    function addUserRow(user) {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
-        <td>${user.id}</td>
-        <td>${user.name}</td>
-        <td>${user.email}</td>
-      `;
-      tbody.appendChild(tr);
-    }
-
-    // Listen for real-time new users
-    socket.on("userCreated", (user) => {
-      addUserRow(user);
-    });
-
-    loadUsers();
-  </script>
 </body>
 </html>

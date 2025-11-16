@@ -16,11 +16,15 @@
     "format": "prettier --write .",
     "migrate": "npx prisma migrate dev --name init"
   },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@faker-js/faker": "^10.1.0",
     "concurrently": "^9.2.1",
     "esbuild": "^0.27.0",
     "eslint": "^9.39.1",
@@ -36,7 +40,6 @@
     "@prisma/client": "^6.19.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",
-    "socket.io": "^4.8.1",
-    "socket.io-client": "^4.8.1"
+    "socket.io": "^4.8.1"
   }
 }
