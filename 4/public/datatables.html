@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Datatables CRUD</title>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.5/css/dataTables.dataTables.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.2.5/css/buttons.dataTables.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/3.1.3/css/select.dataTables.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.6.1/css/dataTables.dateTime.min.css" />
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/2.3.5/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.2.5/js/dataTables.buttons.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.2.5/js/buttons.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/select/3.1.3/js/dataTables.select.js"></script>
+    <script src="https://cdn.datatables.net/select/3.1.3/js/select.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/datetime/1.6.1/js/dataTables.dateTime.min.js"></script>
+
+
+    <!-- Socket.IO -->
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+
+<body>
+
+    <h1>Datatables CRUD</h1>
+
+    <button id="newUserBtn" class="btn btn-success mb-3">New</button>
+
+    <table id="usersTable" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th></th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Phone</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+    </table>
+
+    <ul id="contextMenu" class="context-menu">
+        <li id="newRow">New</li>
+        <li id="deleteRow">Delete</li>
+    </ul>
+
+    <style>
+        .context-menu {
+            position: absolute;
+            background: white;
+            border: 1px solid #aaa;
+            display: none;
+            list-style: none;
+            padding: 0;
+        }
+
+        .context-menu li {
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .context-menu li:hover {
+            background: #eee;
+        }
+    </style>
+
+    <script>
+
+        const table = $('#usersTable').DataTable({
+            ajax: {
+                url: '/api/users',
+                dataSrc: ''
+            },
+            columns: [
+                { data: 'id' },
+                { data: 'firstname' },
+                { data: 'lastname' },
+                { data: 'email' },
+                { data: 'phone' },
+            ],
+            select: {
+                style: 'single'
+            }
+        });
+
+        $('#usersTable tbody').on('dblclick', 'td', function () {
+            const cell = table.cell(this);
+            const original = cell.data();
+            const row = table.row(this).data();
+            const field = table.column(this).dataSrc();
+
+            if (field === 'id') return; // don't edit id
+
+            $(this).attr('contenteditable', true).focus();
+
+            $(this).one('blur', async function () {
+                const newValue = $(this).text().trim();
+
+                $(this).attr('contenteditable', false);
+
+                if (newValue === original) return;
+
+                const updatedUser = { ...row, [field]: newValue };
+
+                const res = await fetch(`/api/users/${row.id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(updatedUser)
+                });
+
+                const result = await res.json();
+                if (result.error) {
+                    console.error(result.error);
+                    cell.data(original).draw();
+                    return;
+                }
+
+                // DataTables automatically updated via socketResponse
+            });
+        });
+
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+
+            const rowEl = e.target.closest('tr');
+            table.row(rowEl).select();
+
+            $('#contextMenu')
+                .css({ top: e.pageY, left: e.pageX })
+                .show();
+        });
+
+        document.addEventListener('click', () => $('#contextMenu').hide());
+
+        $("#newUserBtn").on("click", () => {
+            openModal(null);
+        });
+
+
+        $('#deleteRow').on('click', async () => {
+            const rowData = table.row('.selected').data();
+            if (!rowData) return;
+
+            const res = await fetch(`/api/users/${rowData.id}`, {
+                method: 'DELETE'
+            });
+
+            const result = await res.json();
+            if (result.error) return console.error(result.error);
+        });
+
+        const modal = new bootstrap.Modal(document.getElementById("userModal"));
+
+        function openModal(user = null) {
+            if (user) {
+                $("#modalTitle").text("Edit User");
+                $("#userId").val(user.id);
+                $("#firstname").val(user.firstname);
+                $("#lastname").val(user.lastname);
+                $("#phone").val(user.phone);
+                $("#email").val(user.email);
+            } else {
+                $("#modalTitle").text("New User");
+                $("#userForm")[0].reset();
+                $("#userId").val("");
+            }
+
+            modal.show();
+        }
+
+        $("#usersTable tbody").on("click", "tr", function () {
+            const rowData = table.row(this).data();
+            if (!rowData) return;
+
+            openModal(rowData);
+        });
+
+        $("#saveUserBtn").on("click", () => {
+            const user = {
+                id: $("#userId").val() || null,
+                firstname: $("#firstname").val(),
+                lastname: $("#lastname").val(),
+                phone: $("#phone").val(),
+                email: $("#email").val()
+            };
+
+            // NEW USER
+            if (!user.id) {
+                socket.emit("createUser", user);  // send to backend
+            }
+            // UPDATE USER
+            else {
+                socket.emit("updateUser", user);
+            }
+
+            modal.hide();
+        });
+
+
+
+
+        const socket = io();
+
+        // ------------------------------------
+        // REAL-TIME SOCKET.IO EVENT LISTENERS
+        // ------------------------------------
+
+        socket.on("userCreated", (user) => {
+            table.row.add(user).draw(false);
+        });
+
+        socket.on("userUpdated", (user) => {
+            const row = table.rows().indexes().filter(i => table.row(i).data().id === user.id);
+
+            if (row.length) {
+                table.row(row[0]).data(user).draw(false);
+            }
+        });
+
+        socket.on("userDeleted", ({ id }) => {
+            const rows = table.rows();
+            rows.every(function () {
+                const rowData = this.data();
+                if (rowData.id === id) {
+                    this.remove().draw(false);
+                }
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>
