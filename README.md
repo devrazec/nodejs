@@ -248,6 +248,6 @@ npm run studio
 http://localhost:3000/
 http://localhost:5555/
 
-# DataTables Download
+# DataTables Libraries Download
 
 https://webapps1.chicago.gov/cdn/DataTables-1.10.20/
