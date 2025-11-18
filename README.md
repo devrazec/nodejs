@@ -224,10 +224,30 @@ npm i -D @faker-js/faker
 npx prisma migrate reset
 npm run migrate
 
+````
+
+# Install DataTables
+
+````
+npm view datatables.net-editor versions
+npm view datatables.net-editor-dt versions
+
+npm i -S datatables.net-editor@1.6.5
+npm i -S datatables.net-editor-dt@1.6.3
+
+node node_modules/datatables.net-editor/install.js ~/projects/DataTables/Editor-1.9.2.zip
+
+````
+
+# Run Project
+
+php -S localhost:8080
+http://localhost:8080/
+
 npm run studio
 http://localhost:3000/
 http://localhost:5555/
 
-````
+# DataTables Download
 
-
+https://webapps1.chicago.gov/cdn/DataTables-1.10.20/

@@ -14,6 +14,9 @@ app.use(express.json());
 // Serve static files from public
 app.use(express.static(path.join(__dirname, "../public")));
 
+app.use('/editor', express.static('node_modules/datatables.net-editor/js'));
+app.use('/editor-dt', express.static('node_modules/datatables.net-editor-dt/css'));
+
 // Redirect root `/` to index.html
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../public", "index.html"));
