@@ -11,6 +11,7 @@ esbuild
     external: [
     "express",
     "@prisma/client",
+    "socket.io",
     "http",
     "https",
     "fs",
@@ -23,7 +24,7 @@ esbuild
     "util",
   ],
     sourcemap: true,
-    minify: true,
+    minify: false,
   })
   .then(() => {
     console.log('Build completed: dist/server.js');

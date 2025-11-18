@@ -241,12 +241,15 @@ node node_modules/datatables.net-editor/install.js ~/projects/DataTables/Editor-
 
 # Run Project
 
+````
 php -S localhost:8080
 http://localhost:8080/
 
 npm run studio
 http://localhost:3000/
 http://localhost:5555/
+
+````
 
 # DataTables Libraries Download
 
